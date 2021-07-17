@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { Text, View, Dimensions, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,7 +12,16 @@ const Tab = createMaterialTopTabNavigator();
 function Root() {
   return (
     <>
-      <View style={{ backgroundColor: '#ffffff' }}>
+      <StatusBar
+        barStyle="dark-content"
+        translucent
+        backgroundColor="#FFFFFF"
+      />
+      <View
+        style={{
+          backgroundColor: '#ffffff',
+          paddingTop: StatusBar.currentHeight,
+        }}>
         <Text
           style={{
             textAlign: 'center',

@@ -7,7 +7,6 @@ import Navigation from './navigation';
 export default function App() {
   return (
     <>
-      <StatusBar animated={true} backgroundColor="#ffffff" barStyle="dark-content" />
       <Navigation />
     </>
   );
