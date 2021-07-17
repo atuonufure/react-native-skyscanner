@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Dimensions, StatusBar } from 'react-native';
+import { Text, View, Dimensions, StatusBar, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -17,19 +17,8 @@ function Root() {
         translucent
         backgroundColor="#FFFFFF"
       />
-      <View
-        style={{
-          backgroundColor: '#ffffff',
-          paddingTop: StatusBar.currentHeight,
-        }}>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontFamily: 'Abel-Regular',
-            fontSize: 17,
-          }}>
-          Flight
-        </Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Flight</Text>
       </View>
       <Tab.Navigator
         tabBarOptions={{
@@ -76,7 +65,7 @@ export default function Navigation() {
 
 function FavouritesScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.screenContainer}>
       {/* <Text>Favourites</Text> */}
       <Flights />
     </View>
@@ -85,9 +74,22 @@ function FavouritesScreen() {
 
 function BrowseScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.screenContainer}>
       {/* <Text>Browse</Text> */}
       <Flights />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  titleContainer: {
+    backgroundColor: '#ffffff',
+    paddingTop: StatusBar.currentHeight,
+  },
+  title: {
+    textAlign: 'center',
+    fontFamily: 'Abel-Regular',
+    fontSize: 17,
+  },
+  screenContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+});

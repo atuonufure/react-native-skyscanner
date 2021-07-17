@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
-import PlaneIcon from '../../../components/Icons/PlaneIcon';
-import FavoriteIcon from '../../../components/Icons/FavoriteIcon';
-import RightArrowIcon from '../../../components/Icons/RightArrowIcon';
-import DahIcon from '../../../components/Icons/DahIcon';
+import PlaneIcon from '../../../components/icons/PlaneIcon';
+import FavoriteIcon from '../../../components/icons/FavoriteIcon';
+import RightArrowIcon from '../../../components/icons/RightArrowIcon';
+import DahIcon from '../../../components/icons/DahIcon';
 
 export default function Flight() {
   const navigation = useNavigation();
