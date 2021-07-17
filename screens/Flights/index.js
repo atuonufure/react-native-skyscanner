@@ -1,15 +1,21 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, FlatList } from 'react-native';
 
 import Flight from './components/Flight';
 
 export default function Flights() {
   return (
-    <>
-      <View>
-        <Text>Flights</Text>
-      </View>
+    <ScrollView
+      style={{ width: '100%' }}
+      contentContainerStyle={{ alignItems: 'center', paddingVertical: 10 }}>
       <Flight />
-    </>
+      <Flight />
+      <Flight />
+      <Flight />
+      <Flight />
+      <Flight />
+      <Flight />
+      <Flight />
+    </ScrollView>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,9 +13,34 @@ function Root() {
   return (
     <>
       <View style={{ backgroundColor: '#ffffff' }}>
-        <Text style={{ textAlign: 'center' }}>Flight</Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontFamily: 'Abel-Regular',
+            fontSize: 17,
+          }}>
+          Flight
+        </Text>
       </View>
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBarOptions={{
+          upperCaseLabel: false,
+          activeTintColor: '#000000',
+          inactiveTintColor: '#000000',
+          indicatorStyle: {
+            height: 4,
+            width: Dimensions.get('window').width / 2 - 40,
+            marginHorizontal: 20,
+            borderRadius: 2,
+            backgroundColor: '#1157A7',
+            marginBottom: 4,
+          },
+          labelStyle: {
+            fontFamily: 'Abel-Regular',
+            fontSize: 17,
+            textTransform: 'none',
+          },
+        }}>
         <Tab.Screen name="Favourites" component={FavouritesScreen} />
         <Tab.Screen name="Browse" component={BrowseScreen} />
       </Tab.Navigator>
@@ -43,7 +68,7 @@ export default function Navigation() {
 function FavouritesScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Favourites</Text>
+      {/* <Text>Favourites</Text> */}
       <Flights />
     </View>
   );
@@ -52,7 +77,7 @@ function FavouritesScreen() {
 function BrowseScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Browse</Text>
+      {/* <Text>Browse</Text> */}
       <Flights />
     </View>
   );
