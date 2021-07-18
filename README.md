@@ -1,6 +1,6 @@
 ## Sky scanner
 
-![Preview image](/src/assets/preview.png)
+![Preview image](/assets/preview.png)
 
 ## Technologies Used 🛠:
 
