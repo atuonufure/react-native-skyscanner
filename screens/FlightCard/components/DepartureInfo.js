@@ -45,8 +45,11 @@ export default function DepartureInfo({ quote, index }) {
 }
 
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: 40, flexDirection: 'row' },
-  placeContainer: { width: 77 },
+  container: {
+    paddingHorizontal: 40,
+    flexDirection: 'row',
+  },
+  placeContainer: { width: 'auto' },
   grayText: {
     fontFamily: 'SFProText-Regular',
     color: '#878787',

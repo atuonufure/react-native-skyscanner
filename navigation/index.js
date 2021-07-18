@@ -21,6 +21,7 @@ function Root() {
         <Text style={styles.title}>Flight</Text>
       </View>
       <Tab.Navigator
+        initialRouteName="Browse"
         tabBarOptions={{
           upperCaseLabel: false,
           activeTintColor: '#000000',
