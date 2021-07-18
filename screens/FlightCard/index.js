@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, StatusBar, StyleSheet, View, Text } from 'react-native';
+import { Image, StatusBar, StyleSheet, View } from 'react-native';
 
 import DepartureInfo from './components/DepartureInfo';
 import PriceBoarding from './components/PriceBoarding';
 import Carousel from './components/Carousel';
 
-export default function FlightCard() {
+export default function FlightCard({ route }) {
+  const { quote, index } = route.params;
   return (
     <>
       <StatusBar
@@ -18,8 +19,8 @@ export default function FlightCard() {
         style={styles.image}
       />
       <View style={styles.container}>
-        <DepartureInfo />
-        <PriceBoarding />
+        <DepartureInfo quote={quote} index={index} />
+        <PriceBoarding quote={quote} />
         <Carousel />
       </View>
     </>

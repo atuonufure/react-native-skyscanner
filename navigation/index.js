@@ -53,7 +53,7 @@ export default function Navigation() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Root"
-        screenOptions={({ route, navigation }) => ({
+        screenOptions={() => ({
           headerShown: false,
         })}>
         <Stack.Screen name="Root" component={Root} />
@@ -66,8 +66,7 @@ export default function Navigation() {
 function FavouritesScreen() {
   return (
     <View style={styles.screenContainer}>
-      {/* <Text>Favourites</Text> */}
-      <Flights />
+      <Flights favoriteStatus={true} />
     </View>
   );
 }
@@ -75,8 +74,7 @@ function FavouritesScreen() {
 function BrowseScreen() {
   return (
     <View style={styles.screenContainer}>
-      {/* <Text>Browse</Text> */}
-      <Flights />
+      <Flights favoriteStatus={false} />
     </View>
   );
 }

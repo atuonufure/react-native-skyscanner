@@ -1,20 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function PriceBoarding() {
+export default function PriceBoarding({ quote }) {
   return (
     <View style={[styles.container, styles.shadow]}>
       <View style={styles.sideContainer}>
         <Text style={styles.title}>Price</Text>
         <View style={styles.priceContainer}>
-          <Text style={styles.info}>23 311</Text>
-          <Text style={styles.info}> ₽</Text>
+          <Text style={styles.info}>{quote.price}</Text>
+          <Text style={styles.info}>{quote.currency}</Text>
         </View>
       </View>
       <View style={styles.border} />
       <View style={styles.sideContainer}>
         <Text style={styles.title}>Boarding</Text>
-        <Text style={styles.info}>19:20</Text>
+        <Text style={styles.info}>{quote.boardingTime}</Text>
       </View>
     </View>
   );

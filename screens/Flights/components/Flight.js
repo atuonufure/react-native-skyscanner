@@ -7,57 +7,74 @@ import {
   Dimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { useDispatch, useSelector } from 'react-redux';
 
-import PlaneIcon from '../../../components/icons/PlaneIcon';
-import FavoriteIcon from '../../../components/icons/FavoriteIcon';
-import RightArrowIcon from '../../../components/icons/RightArrowIcon';
-import DahIcon from '../../../components/icons/DahIcon';
+import { setFlights } from '../../../redux/store/flightReducer';
 
-export default function Flight() {
+import {
+  PlaneIcon,
+  FavoriteIcon,
+  UnFavoriteIcon,
+  RightArrowIcon,
+  DahIcon,
+} from '../../../components/icons';
+
+export default function Flight({ quote, index }) {
   const navigation = useNavigation();
+  const flights = useSelector(state => state.flightReducer.flights);
+  const dispatch = useDispatch();
 
   return (
-    <>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('FlightCard')}
-        style={[styles.container, styles.shadow]}>
-        <View style={styles.upperContainer}>
-          <View style={styles.plane}>
-            <PlaneIcon />
-          </View>
-          <View style={styles.routeContainer}>
-            <View style={styles.towns}>
-              <Text style={styles.townName}>Moscow</Text>
-              <View style={styles.rightArrow}>
-                <RightArrowIcon />
-              </View>
-              <Text style={styles.townName}>New York</Text>
-            </View>
-            <View style={styles.placeContainer}>
-              <Text style={styles.placeInfo}>VKO</Text>
-              <View style={styles.dah}>
-                <DahIcon />
-              </View>
-              <Text style={styles.placeInfo}>28 June, 2020</Text>
-              <View style={styles.dah}>
-                <DahIcon />
-              </View>
-              <Text style={styles.placeInfo}>14:50</Text>
-            </View>
-            <Text style={styles.placeInfo}>Aeroflot</Text>
-          </View>
-          <View style={styles.favorite}>
-            <FavoriteIcon />
-          </View>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate({
+          name: 'FlightCard',
+          params: { quote, index },
+        })
+      }
+      style={[styles.container, styles.shadow]}>
+      <View style={styles.upperContainer}>
+        <View style={styles.plane}>
+          <PlaneIcon />
         </View>
-        <View style={styles.border} />
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>Price: </Text>
-          <Text style={styles.currency}>23 924</Text>
-          <Text style={styles.currency}> ₽</Text>
+        <View style={styles.routeContainer}>
+          <View style={styles.towns}>
+            <Text style={styles.townName}>{quote.fromTown}</Text>
+            <View style={styles.rightArrow}>
+              <RightArrowIcon />
+            </View>
+            <Text style={styles.townName}>{quote.toTown}</Text>
+          </View>
+          <View style={styles.placeContainer}>
+            <Text style={styles.placeInfo}>{quote.fromIataCode}</Text>
+            <View style={styles.dah}>
+              <DahIcon />
+            </View>
+            <Text style={styles.placeInfo}>{quote.depatureDate}</Text>
+            <View style={styles.dah}>
+              <DahIcon />
+            </View>
+            <Text style={styles.placeInfo}>{quote.depatureTime}</Text>
+          </View>
+          <Text style={styles.placeInfo}>{quote.carrierName}</Text>
         </View>
-      </TouchableOpacity>
-    </>
+        <View style={styles.favorite}>
+          <TouchableOpacity
+            onPress={() => {
+              flights[index].favorite = !flights[index].favorite;
+              dispatch(setFlights([...flights]));
+            }}>
+            {quote.favorite ? <FavoriteIcon /> : <UnFavoriteIcon />}
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.border} />
+      <View style={styles.priceContainer}>
+        <Text style={styles.price}>Price: </Text>
+        <Text style={styles.currency}>{quote.price}</Text>
+        <Text style={styles.currency}>{quote.currency}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
